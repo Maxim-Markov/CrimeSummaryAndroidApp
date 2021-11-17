@@ -1,6 +1,5 @@
 package com.highresults.crimesummary
 
-import android.icu.text.CaseMap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*

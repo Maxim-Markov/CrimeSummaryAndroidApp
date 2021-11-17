@@ -7,18 +7,17 @@ import androidx.lifecycle.ViewModel
 import com.highresults.crimesummary.database.CrimeRepository
 import java.util.*
 
-
-class CrimeDetailViewModel() : ViewModel() {
+class CrimeDetailViewModel : ViewModel() {
     private val crimeRepository =
-        CrimeRepository.get()
+            CrimeRepository.get()
 
     private val crimeIdLiveData =
-        MutableLiveData<UUID>()
+            MutableLiveData<UUID>()
 
     var crimeLiveData: LiveData<Crime?> =
-        Transformations.switchMap(crimeIdLiveData){
-                crimeId -> crimeRepository.getCrime(crimeId)
-        }
+            Transformations.switchMap(crimeIdLiveData) { crimeId ->
+                crimeRepository.getCrime(crimeId)
+            }
 
     fun loadCrime(crimeId: UUID) {
         crimeIdLiveData.value = crimeId
